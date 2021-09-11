@@ -13,17 +13,17 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Olympics Quiz')
 
 
-def print_question(q_number):
+def print_question(question):
     """
     Print question and options from the sheet and request answer input
     """
     data = SHEET.worksheet('Questions').get_all_values()
     headings = data[0]
-    questions = data[q_number]
+    options = data[question]
 
     while True:
-        for heading, question in zip(headings, questions):
-            print(f'{heading}: {question}')
+        for heading, option in zip(headings, options):
+            print(f'{heading}: {option}')
 
         print('A, B, C or D')
         user_ans = input('Answer: ')
@@ -52,5 +52,19 @@ def validate_ans(answer):
     return True
 
 
-print_question(1)
-print_question(2)
+def check_answer(user_ans, question):
+    """
+    Check if the users answer matches the correct answer in the google sheet
+    """
+    correct_answers = SHEET.worksheet('Answers').get_all_values()
+    correct_answer = correct_answers[question][0]
+
+    if user_ans == correct_answer:
+        print('You were right!\n')
+    else:
+        print(f'Sorry, {correct_answer} is the correct answer\n')
+
+
+for i in range(1, 3):
+    user_answer = print_question(i)
+    check_answer(user_answer, i)
