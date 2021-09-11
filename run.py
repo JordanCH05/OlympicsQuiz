@@ -69,14 +69,32 @@ def check_answer(user_ans, question, score):
     return score
 
 
+def record_score(score):
+    """
+    Records username and score then adds it to google sheet.
+    The usernames and scores are then sorted highest first.
+    """
+    username = input('Enter your name: ')
+
+    highscores = SHEET.worksheet('Highscores')
+    highscores.append_row([username, score])
+
+    hs_list = highscores.get_all_values()
+    highscore = lambda hs_list: int(hs_list[1])
+    hs_list.sort(key=highscore, reverse=True)
+
+    highscores.update('A1', hs_list)
+
+
 def main():
     """
     Run all program functions
     """
     score = 0
-    print('Welcome to the Olympics Quiz\n')
     for i in range(1, 11):
         score = print_question(i, score)
+    record_score(score)
 
 
+print('Welcome to the Olympics Quiz\n')
 main()
