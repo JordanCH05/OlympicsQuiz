@@ -21,10 +21,36 @@ def print_question(q_number):
     headings = data[0]
     questions = data[q_number]
 
-    for heading, question in zip(headings, questions):
-        print(f'{heading}: {question}')
-    print('A, B, C or D')
-    input('Answer: ')
+    while True:
+        for heading, question in zip(headings, questions):
+            print(f'{heading}: {question}')
+
+        print('A, B, C or D')
+        user_ans = input('Answer: ')
+
+        if validate_ans(user_ans):
+            break
+
+    return user_ans
+
+
+def validate_ans(answer):
+    """
+    If values are not A, B, C or D then raise a ValueError
+    """
+    try:
+        if answer.capitalize() in ('A', 'B', 'C', 'D'):
+            print('Valid answer\n')
+        else:
+            raise ValueError(
+                f"{answer} is an invalid answer"
+            )
+    except ValueError as e:
+        print(f'Error: {e}, please answer with A, B, C or D\n')
+        return False
+
+    return True
 
 
 print_question(1)
+print_question(2)
