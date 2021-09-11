@@ -86,6 +86,19 @@ def record_score(score):
     highscores.update('A1', hs_list)
 
 
+def print_highscores():
+    """
+    Print Top 10 Highscores from google sheet
+    """
+    highscores = SHEET.worksheet('Highscores').get_all_values()
+
+    print('\nHighscores')
+
+    hs_length = len(highscores) if len(highscores) < 10 else 10
+    for i in range(0, hs_length):
+        print(f'{i+1}. {highscores[i][0]} : {highscores[i][1]}')
+
+
 def main():
     """
     Run all program functions
@@ -94,6 +107,7 @@ def main():
     for i in range(1, 11):
         score = print_question(i, score)
     record_score(score)
+    print_highscores()
 
 
 print('Welcome to the Olympics Quiz\n')
