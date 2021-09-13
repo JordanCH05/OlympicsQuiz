@@ -27,6 +27,7 @@ def print_question(question, score):
 
         print('A, B, C or D')
         user_ans = input('Answer: ')
+        user_ans = user_ans.capitalize()
 
         if validate_ans(user_ans):
             break
@@ -39,7 +40,7 @@ def validate_ans(answer):
     If values are not A, B, C or D then raise a ValueError
     """
     try:
-        if answer.capitalize() in ('A', 'B', 'C', 'D'):
+        if answer in ('A', 'B', 'C', 'D'):
             print('Valid answer\n')
         else:
             raise ValueError(
@@ -110,5 +111,5 @@ def main():
     print_highscores()
 
 
-print('Welcome to the Olympics Quiz\n')
+print('Welcome to the 2021 Tokyo Olympics Quiz\n')
 main()
