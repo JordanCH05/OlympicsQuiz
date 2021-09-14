@@ -27,6 +27,7 @@ def print_question(question, score):
 
         print('A, B, C or D')
         user_ans = input('Answer: ')
+        user_ans = user_ans.strip()
         user_ans = user_ans.capitalize()
 
         if validate_ans(user_ans):
@@ -81,8 +82,7 @@ def record_score(score):
     highscores.append_row([username, score])
 
     hs_list = highscores.get_all_values()
-    highscore = lambda hs_list: int(hs_list[1])
-    hs_list.sort(key=highscore, reverse=True)
+    hs_list.sort(key=lambda hs_list: int(hs_list[1]), reverse=True)
 
     highscores.update('A1', hs_list)
 
