@@ -22,13 +22,14 @@ def print_question(question, score):
     options = data[question]
 
     while True:
+        print('\n')
         for heading, option in zip(headings, options):
             print(f'{heading}: {option}')
 
         print('A, B, C or D')
+        print('Q to quit or R to restart')
         user_ans = input('Answer: ')
-        user_ans = user_ans.strip()
-        user_ans = user_ans.capitalize()
+        user_ans = user_ans.strip().capitalize()
 
         if validate_ans(user_ans):
             break
@@ -43,15 +44,37 @@ def validate_ans(answer):
     try:
         if answer in ('A', 'B', 'C', 'D'):
             print('Valid answer\n')
+        elif answer in ('Q', 'Quit'):
+            end_program('quit')
+            return False
+        elif answer in ('R', 'Restart'):
+            end_program('restart')
+            return False
         else:
             raise ValueError(
                 f"{answer} is an invalid answer"
             )
     except ValueError as e:
-        print(f'Error: {e}, please answer with A, B, C or D\n')
+        print(f'\nError: {e}, please answer with A, B, C or D')
         return False
 
     return True
+
+
+def end_program(type):
+    while True:
+        if type == 'try again':
+            sure = input('\nWould you like to try again? Y/N: ')
+        else:
+            sure = input(f'\nAre you sure you want to {type}? Y/N: ')
+        sure = sure.strip().capitalize()
+        if sure in ('Y', 'Yes'):
+            if type in ('restart', 'try again'):
+                main()
+            elif type == 'quit':
+                quit()
+        elif sure in ('N', 'No'):
+            break
 
 
 def check_answer(user_ans, question, score):
@@ -67,7 +90,7 @@ def check_answer(user_ans, question, score):
     else:
         print(f'Sorry, {correct_answer} is the correct answer\n')
 
-    print(f'Current Score: {score}\n')
+    print(f'Current Score: {score}')
     return score
 
 
@@ -76,7 +99,21 @@ def record_score(score):
     Records username and score then adds it to google sheet.
     The usernames and scores are then sorted highest first.
     """
-    username = input('Enter your name: ')
+    print('\nYou completed the quiz!\n')
+    print(f'You scored {score} out of 10\n')
+    if score == 10:
+        print('Wow a perfect score!')
+    elif score in range(8, 10):
+        print('Wow you really know your stuff')
+    elif score in range(6, 8):
+        print('Nice')
+    elif score == 5:
+        print('Halfway there!')
+    elif score in range(3, 5):
+        print('Better luck next time')
+    else:
+        print('Did you even watch the Olympics?')
+    username = input('\nEnter your name: ')
 
     highscores = SHEET.worksheet('Highscores')
     highscores.append_row([username, score])
@@ -104,12 +141,13 @@ def main():
     """
     Run all program functions
     """
+    print('\nWelcome to the 2021 Tokyo Olympics Quiz')
     score = 0
     for i in range(1, 11):
         score = print_question(i, score)
     record_score(score)
     print_highscores()
+    end_program('try again')
 
 
-print('Welcome to the 2021 Tokyo Olympics Quiz\n')
 main()
