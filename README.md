@@ -1,31 +1,53 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# The Tokyo Olympics Quiz
+The Tokyo Olympics Quiz is a Python terminal quiz, which runs in the Code Institute mock terminal on Heroku.
 
-Welcome JordanCH05,
+Users answer 10 multiple choice questions about the Tokyo 2021 Olympic Games and are then ranked in a Highscores list.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+The live app can be found [here](https://tokyo-olympics-quiz.herokuapp.com/)
 
-## Reminders
+![Responsive Mockup of site](images/responsive.png)
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+## User Experience
 
-## Creating the Heroku app
+### User stories
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+*
+*
+### App Owner Stories
+*
+*
 
-1. `heroku/python`
-2. `heroku/nodejs`
+## Functional Scope
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+flowchart
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+## Features
 
-Connect your GitHub repository and deploy as normal.
+### Existing Features
 
-## Constraints
+Welcome message
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+Question and options layout
 
------
-Happy coding!
+Input instructions
+
+### Future Features
+
+*
+*
+
+## Testing
+
+* PEP8
+* Given invaid inputs
+* local terminal
+
+## Bugs and Solutions
+
+* Lambda function
+
+## Deployment
+
+## API
+
+## Credits

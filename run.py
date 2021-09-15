@@ -78,7 +78,7 @@ def end_program(type):
                 main()
             elif type == 'quit':
                 print('Quitting...')
-                quit()
+                quit('Goodbye')
         elif sure in ('N', 'No'):
             break
 
@@ -157,7 +157,7 @@ def main():
     record_score(score)
     print_highscores()
     end_program('try again')
-    print('Quittting...')
+    print('Goodbye')
 
 
 main()
