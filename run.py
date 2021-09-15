@@ -28,7 +28,7 @@ def print_question(question, score):
 
         print('A, B, C or D')
         print('Q to quit or R to restart')
-        user_ans = input('Answer: ')
+        user_ans = input('Answer: \n')
         user_ans = user_ans.strip().capitalize()
 
         if validate_ans(user_ans):
@@ -41,6 +41,7 @@ def validate_ans(answer):
     """
     If values are not A, B, C or D then raise a ValueError
     """
+    print('Validating answer...')
     try:
         if answer in ('A', 'B', 'C', 'D'):
             print('Valid answer\n')
@@ -64,9 +65,9 @@ def validate_ans(answer):
 def end_program(type):
     while True:
         if type == 'try again':
-            sure = input('\nWould you like to try again? Y/N: ')
+            sure = input('\nWould you like to try again? Y/N: \n')
         else:
-            sure = input(f'\nAre you sure you want to {type}? Y/N: ')
+            sure = input(f'\nAre you sure you want to {type}? Y/N: \n')
         sure = sure.strip().capitalize()
         if sure in ('Y', 'Yes'):
             if type in ('restart', 'try again'):
@@ -81,6 +82,8 @@ def check_answer(user_ans, question, score):
     """
     Check if the users answer matches the correct answer in the google sheet
     """
+    print('Checking answer...')
+
     correct_answers = SHEET.worksheet('Answers').get_all_values()
     correct_answer = correct_answers[question][0]
 
@@ -113,7 +116,7 @@ def record_score(score):
         print('Better luck next time')
     else:
         print('Did you even watch the Olympics?')
-    username = input('\nEnter your name: ')
+    username = input('\nEnter your name: \n')
 
     highscores = SHEET.worksheet('Highscores')
     highscores.append_row([username, score])
@@ -128,6 +131,7 @@ def print_highscores():
     """
     Print Top 10 Highscores from google sheet
     """
+    print('Getting highscores...')
     highscores = SHEET.worksheet('Highscores').get_all_values()
 
     print('\nHighscores')
