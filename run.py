@@ -17,6 +17,7 @@ def print_question(question, score):
     """
     Print question and options from the sheet and request answer input
     """
+    print('Retrieving questions...')
     data = SHEET.worksheet('Questions').get_all_values()
     headings = data[0]
     options = data[question]
@@ -29,7 +30,8 @@ def print_question(question, score):
         print('A, B, C or D')
         print('Q to quit or R to restart')
         user_ans = input('Answer: \n')
-        user_ans = user_ans.strip().capitalize()
+        user_ans = user_ans.strip()
+        user_ans = user_ans.capitalize()
 
         if validate_ans(user_ans):
             break
@@ -68,7 +70,8 @@ def end_program(type):
             sure = input('\nWould you like to try again? Y/N: \n')
         else:
             sure = input(f'\nAre you sure you want to {type}? Y/N: \n')
-        sure = sure.strip().capitalize()
+        sure = sure.strip()
+        sure = sure.capitalize()
         if sure in ('Y', 'Yes'):
             if type in ('restart', 'try again'):
                 main()
