@@ -74,8 +74,10 @@ def end_program(type):
         sure = sure.capitalize()
         if sure in ('Y', 'Yes'):
             if type in ('restart', 'try again'):
+                print('Restarting...')
                 main()
             elif type == 'quit':
+                print('Quitting...')
                 quit()
         elif sure in ('N', 'No'):
             break
@@ -155,6 +157,7 @@ def main():
     record_score(score)
     print_highscores()
     end_program('try again')
+    print('Quittting...')
 
 
 main()
