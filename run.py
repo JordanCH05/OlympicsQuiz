@@ -17,7 +17,7 @@ def print_question(question, score):
     """
     Print question and options from the sheet and request answer input
     """
-    print('Retrieving questions...')
+    print('Retrieving question...')
     data = SHEET.worksheet('Questions').get_all_values()
     headings = data[0]
     options = data[question]
