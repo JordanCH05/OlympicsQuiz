@@ -1,7 +1,7 @@
 # The Tokyo Olympics Quiz
 The Tokyo Olympics Quiz is a Python terminal quiz, which runs in the Code Institute mock terminal on Heroku.
 
-Users answer 10 multiple choice questions about the Tokyo 2021 Olympic Games and are then ranked in a Highscores list.
+Users can test their Olympic knowledge from this year's Summer Olympics by answering 10 multiple choice questions about the Tokyo 2021 Olympic Games and compare their scores with other users in a ranked highscores list.
 
 The live app can be found [here](https://tokyo-olympics-quiz.herokuapp.com/)
 
