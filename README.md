@@ -118,11 +118,10 @@ ___
 
 ## Bugs and Solutions
 
-* Lambda function
-* Trim answers and capitalize answers
-* Whole word input
-* validate return false
-* highscore list length
+* User inputs with spaces and lowercase were considered invalid, so I trimmed the inputs and capitalized them.
+* Users would sometimes use whole words such as `"yes"` or `"no"` instead of `"Y"` or `"N"`, so I made these valid inputs.
+* When inputting `"N"` after being asked `"Are you sure you want to quit/restart?"` the program did nothing. This was fixed by making sure `validate_ans()` returned `False` when this happened so the program can continue.
+* Printing the Highscores would result in an error if there were less than 10 Highscores. To fix this the program now only prints up to the length of the Highscore list (`len(highscores)`) if it is less than 10.
 
 ___
 
@@ -140,12 +139,19 @@ Steps for deploement:
 
 ___
 
-## API
+## Language and Programs Used
+
+* Writtn in Python 3.0
+* Google Sheets used to store data
+* GitHub used for version control
+* Google Drive API
+* Google Sheets API
 
 ___
 
 ## Credits
 
-* Code institute for the deployment terminal
-* Wikipedia for information about the Tokyo 2021 Olympic Games
+* [Code Institute](https://codeinstitute.net/)'s deployment terminal was used
+* [Wikipedia](https://en.wikipedia.org/wiki/2020_Summer_Olympics) and [BBC](https://www.bbc.co.uk/sport/olympics/57240400) was used for information about the Tokyo 2021 Olympic Games
+* [W3 Schools](https://www.w3schools.com/) was used for Python reference
 
