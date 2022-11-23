@@ -3,7 +3,7 @@ The Tokyo Olympics Quiz is a Python terminal quiz, which runs in the Code Instit
 
 Users can test their Olympic knowledge from this year's Summer Olympics by answering 10 multiple choice questions about the Tokyo 2021 Olympic Games and compare their scores with other users in a ranked highscores list.
 
-The live app can be found [here](https://tokyo-olympics-quiz.herokuapp.com/)
+The live app can be found [here](https://tokyo-olympics-quiz.onrender.com)
 
 ![Responsive Mockup of site](images/responsive.png)
 
@@ -127,9 +127,28 @@ ___
 
 ## Deployment
 
-This project was deplyed using Code INstitue's mock terminal for Heroku
+This project has been migrated to be deployed on Render
 
-Steps for deploement:
+Steps for deployment on Render:
+
+* Fork or clone this repository
+* Create a new Web Service on Render.com
+* Connect the repository
+* Set the environment to **Python 3**
+* Set the build command as: **pip install -r requirements.txt && npm install**
+* Set the start command as: **node index.js**
+* In the advanced tab set these Environmental variables:
+   | Key                 | Value     |
+   |---------------------|-----------|
+   | PORT                | 8000      |
+   | PYTHON_VERSION      | 3.10.7    |
+* Add your creds.json in secret file
+* Click **Create Web Services**
+
+
+This project was originally depolyed using Code Institue's mock terminal for Heroku
+
+Steps for deployment on Heroku:
 
 * Fork or clone this repository
 * Create a new Heroku app
